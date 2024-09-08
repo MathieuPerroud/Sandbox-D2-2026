@@ -51,6 +51,17 @@ android {
 
 dependencies {
 
+    implementation(
+        project(":features:characters")
+    )
+    implementation(
+        project(":data")
+    )
+    implementation(
+        project(":domain")
+    )
+
+
     //Android/Kotlin
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -61,14 +72,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    //Data
-
-    implementation(libs.androidx.room.runtime)
-
-    annotationProcessor(libs.androidx.room.compiler)
-    implementation(libs.squareup.retrofit.runtime)
-    implementation(libs.squareup.retrofit.gson)
-
+    //DI
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

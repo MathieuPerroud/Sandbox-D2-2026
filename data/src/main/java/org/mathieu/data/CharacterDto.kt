@@ -1,11 +1,6 @@
-package org.mathieu.sandbox_d2_2026.data
+package org.mathieu.data
 
 import com.google.gson.annotations.SerializedName
-
-
-
-
-
 
 data class GetCharactersDto(
     val info: PagerInfo,

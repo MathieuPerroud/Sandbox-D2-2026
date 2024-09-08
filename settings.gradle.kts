@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Sandbox-D2-2026"
 include(":app")
- 
+include(":domain")
+include(":data")
+include(":features:characters")
