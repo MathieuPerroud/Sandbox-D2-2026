@@ -1,14 +1,13 @@
 package org.mathieu.data.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
-import org.mathieu.data.characters.CharacterDao
+import org.mathieu.data.characters.local.CharacterDao
 import org.mathieu.data.characters.CharacterRepositoryImpl
-import org.mathieu.data.characters.CharactersService
+import org.mathieu.data.characters.remote.CharactersService
 import org.mathieu.data.sources.SandboxDatabase
 import org.mathieu.domain.characters.CharactersRepository
 import retrofit2.Retrofit

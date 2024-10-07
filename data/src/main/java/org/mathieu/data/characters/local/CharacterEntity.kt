@@ -1,4 +1,4 @@
-package org.mathieu.data.characters
+package org.mathieu.data.characters.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

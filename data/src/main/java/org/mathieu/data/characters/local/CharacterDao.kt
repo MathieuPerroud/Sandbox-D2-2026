@@ -1,4 +1,4 @@
-package org.mathieu.data.characters
+package org.mathieu.data.characters.local
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,4 +1,4 @@
-package org.mathieu.data.characters
+package org.mathieu.data.characters.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path

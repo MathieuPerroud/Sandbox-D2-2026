@@ -5,22 +5,24 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
+import org.mathieu.data.characters.local.CharacterDao
+import org.mathieu.data.characters.local.CharacterEntity
+import org.mathieu.data.characters.local.toModel
+import org.mathieu.data.characters.remote.CharacterDto
+import org.mathieu.data.characters.remote.CharactersService
+import org.mathieu.data.characters.remote.toEntity
 import org.mathieu.domain.characters.CannotProvideUpdatedCharacters
 import org.mathieu.domain.characters.Character
-import org.mathieu.domain.characters.CharacterNotFoundForId
 import org.mathieu.domain.characters.CharactersAndVersion
 import org.mathieu.domain.characters.CharactersNotFound
 import org.mathieu.domain.characters.CharactersRepository
 import org.mathieu.domain.characters.Version
 import java.time.Instant
 import java.util.Date
-import kotlin.coroutines.coroutineContext
 
 private const val CHARACTER_PREFS = "character_repository_preferences"
 private val lastFetchDateKey = longPreferencesKey("last_date_fetch")

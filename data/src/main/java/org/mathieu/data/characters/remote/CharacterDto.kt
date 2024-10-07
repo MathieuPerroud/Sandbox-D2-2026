@@ -1,6 +1,7 @@
-package org.mathieu.data.characters
+package org.mathieu.data.characters.remote
 
 import com.google.gson.annotations.SerializedName
+import org.mathieu.data.characters.local.CharacterEntity
 
 data class GetCharactersDto(
     val info: PagerInfo,
