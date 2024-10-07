@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.mathieu.characters.details.CharacterDetailsContracts.*
-import org.mathieu.domain.CharactersRepository
+import org.mathieu.domain.characters.CharactersRepository
 
 interface CharacterDetailsContracts {
 

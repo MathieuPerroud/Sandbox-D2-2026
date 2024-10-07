@@ -1,9 +1,16 @@
-package org.mathieu.data
+package org.mathieu.data.di
 
+import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
-import org.mathieu.domain.CharactersRepository
+import org.mathieu.data.characters.CharacterDao
+import org.mathieu.data.characters.CharacterRepositoryImpl
+import org.mathieu.data.characters.CharactersService
+import org.mathieu.data.sources.SandboxDatabase
+import org.mathieu.domain.characters.CharactersRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,6 +18,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val RMAPI_URL = "https://rickandmortyapi.com/api/"
 
 private fun provideHttpClient(): OkHttpClient = OkHttpClient()
+
+private fun provideDataBase(application: Application): SandboxDatabase =
+    Room.databaseBuilder(
+        application,
+        SandboxDatabase::class.java,
+        "sandbox"
+    ).
+    fallbackToDestructiveMigration().build()
 
 private val gson = GsonBuilder()
     .serializeNulls() // Configure Gson to include null values
@@ -28,13 +43,26 @@ private val retrofit = buildRetrofit(provideHttpClient())
 
 val dataModule = module {
 
+    single {
+        provideDataBase(get())
+    }
+
+    single<CharacterDao> {
+        get<SandboxDatabase>().charactersDao()
+    }
+
     single<CharactersService> {
         retrofit.create(CharactersService::class.java)
     }
 
     single<CharactersRepository> {
+
+        val db: SandboxDatabase = get()
+
         CharacterRepositoryImpl(
-            get<CharactersService>()
+            context = get(),
+            charactersService = get(),
+            charactersDao = get()
         )
     }
 

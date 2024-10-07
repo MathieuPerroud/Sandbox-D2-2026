@@ -29,7 +29,7 @@ import coil.compose.SubcomposeAsyncImage
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.mathieu.characters.list.CharactersContracts.*
-import org.mathieu.domain.Character
+import org.mathieu.domain.characters.Character
 
 /**
  *

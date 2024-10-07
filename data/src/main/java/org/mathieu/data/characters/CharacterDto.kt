@@ -1,4 +1,4 @@
-package org.mathieu.data
+package org.mathieu.data.characters
 
 import com.google.gson.annotations.SerializedName
 
@@ -87,4 +87,9 @@ data class LocationDto(
     val url: String
 )
 
+fun CharacterDto.toEntity() = CharacterEntity(
+    id = id,
+    name = name,
+    pictureUrl = image
+)
 
