@@ -53,10 +53,13 @@ class CharactersViewModel : ViewModel(), KoinComponent {
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
-            val characters = charactersRepository.getAllCharacters()
 
-            _state.update {
-                State(characters = characters)
+            charactersRepository.getCharactersFlow().collect { characters ->
+
+                _state.update {
+                    State(characters = characters)
+                }
+
             }
 
         }
